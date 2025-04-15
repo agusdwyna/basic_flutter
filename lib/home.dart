@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:belajar_navigasi/login_page.dart';
+import 'package:belajar_navigasi/beranda_page.dart';
+import 'package:belajar_navigasi/pencarian_page.dart';
+import 'package:belajar_navigasi/favorit_page.dart';
+import 'package:belajar_navigasi/profil_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -12,10 +15,10 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
 
   final List<Widget> _pages = [
-    const Center(child: Text('Beranda')),
-    const Center(child: Text('Pencarian')),
-    const Center(child: Text('Favorit')),
-    const Center(child: Text('Profil')),
+    const BerandaPage(), // Gunakan widget halaman
+    const PencarianPage(),
+    const FavoritPage(),
+    const ProfilPage(),
   ];
 
   void _onItemTapped(int index) {
@@ -28,17 +31,19 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text('Beranda')),
-
-      // Tambahkan drawer di sini
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(color: Colors.redAccent),
-              child: Text(
-                'Menu Navigasi',
-                style: TextStyle(color: Colors.white, fontSize: 24),
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 255, 82, 82),
+              ),
+              child: Center(
+                child: Text(
+                  'Menu Navigasi',
+                  style: TextStyle(fontSize: 24, color: Colors.white),
+                ),
               ),
             ),
             ListTile(
@@ -76,7 +81,6 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-
       body: _pages[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
